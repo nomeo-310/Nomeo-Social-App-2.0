@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    user-select: none;
+    line-height: 1.5;
+}
+html {
+    scroll-behavior: smooth;
+}
+html::-webkit-scrollbar,
+div::-webkit-scrollbar {
+    width: 0.5rem;
+}
+div::-webkit-scrollbar {
+    height: 0.45rem;
+}
+html::-webkit-scrollbar-thumb,
+div::-webkit-scrollbar-thumb {
+    border-radius: 5rem;
+    background: #ccc;
+    transition: all 0.5s ease-in-out;
+}
+html::-webkit-scrollbar-thumb:hover,
+div::-webkit-scrollbar-thumb:hover {
+    background: #7e7c7c;
+}
+html::-webkit-scrollbar-track,
+div::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+}

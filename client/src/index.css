@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('./assets/font/Quicksand-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('./assets/font/Outfit-Regular.ttf');
+}
