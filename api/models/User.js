@@ -8,14 +8,7 @@ const UserSchema = new mongoose.Schema({
         max: 15,
         unique:true,
     },
-    firstName: {
-        type: String,
-        require: true,
-        min: 3,
-        max: 15,
-        unique: true,
-    },
-    lastName: {
+    fullName: {
         type: String,
         require: true,
         min: 3,
@@ -54,6 +47,24 @@ const UserSchema = new mongoose.Schema({
         type: Array,
         default: false,
     },
+    description: {
+        type: String,
+        max: 200,
+    },
+    socialProfiles: {
+        type: Array,
+        default: [],
+    },
+    relationship: {
+        type: String,
+    },
+    hobby: {
+        type:String,
+    },
+    location: String,
+    occupation: String,
+    viewedProfile: Number,
+    impressions: Number,
 }, 
 {timestamps: true}
 )
