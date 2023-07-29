@@ -1,11 +1,10 @@
 import React from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../../components/context/UserContext';
-import Header from './Header';
-import ProfileWidget from './ProfileWidget';
 import Feeds from './Feeds';
 import PostForm from './PostForm';
 import FriendListWidget from './FriendListWidget';
+import PageTitle from '../../components/PageTitle';
 
 
 
@@ -13,7 +12,7 @@ const Home = () => {
     const {user} = useContext(UserContext);
   return (
     <div className='w-full min-h-screen md:pb-10 pb-6'>
-        <Header/>
+        <PageTitle/>
         <div className="pt-16 lg:pt-24 md:pt-20 flex-col md:flex-row lg:w-[78%] mx-auto flex md:gap-4 w-[92%]">
             <div className='lg:w-[35%] md:w-[45%]'>
                 <div className='mt-3 md:mt-0'>

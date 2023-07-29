@@ -6,12 +6,16 @@ import Home from '../screens/home/Home';
 import Profile from '../screens/profile/Profile';
 import Login from '../screens/sign-in-out/Login';
 import Registration from '../screens/sign-in-out/Registration';
+import ScrollUp from './ScrollUp'
+import Header from '../screens/home/Header';
 
 
 const PageRouter = () => {
   const {user} = useContext(UserContext);
   return (
     <BrowserRouter>
+      <Header/>
+      <ScrollUp/>
       <Routes>
           <Route path='/' element={user ? <Home/> : <Registration/>}/>
           <Route path='/login' element={ user ? <Home/> : <Login/>}/>

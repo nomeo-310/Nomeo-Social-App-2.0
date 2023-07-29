@@ -7,14 +7,13 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SmallAvatar from '../../components/SmallAvatar';
 import { FaUserCog, FaMapMarkerAlt, FaBriefcase, FaPeopleArrows, FaPen, FaTwitter, FaLinkedin, FaMagic, FaTimesCircle } from 'react-icons/fa';
-import Header from '../home/Header';
 import Avatar from '../../components/Avatar';
-import FriendListWidget from '../home/FriendListWidget';
 import ProfileWidget from '../home/ProfileWidget';
 import Post from '../home/Post';
 import PostForm from '../home/PostForm';
 import ProfileForm from './ProfileForm';
 import Card from '../../components/Card';
+import PageTitle from '../../components/PageTitle'
 
 import axios from 'axios';
 
@@ -69,7 +68,7 @@ const Profile = () => {
 
   return (
     <div className='w-full min-h-screen md:pb-10 pb-6'>
-        <Header/>
+        <PageTitle/>
         <div className="pt-16 lg:pt-24 md:pt-20 flex-col md:flex-row lg:w-[78%] md:w-[92%] mx-auto flex md:gap-4 w-[92%]">
             <div className='hidden md:block lg:w-[35%] md:w-[40%]'>
                 <ProfileWidget profileDetails={profile}/>
