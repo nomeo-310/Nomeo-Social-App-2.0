@@ -124,7 +124,7 @@ const Profile = () => {
                                     <h2 className='text-xs lg:text-sm text-gray-400 dark:text-white'>@{profile.userName}</h2>
                                     <h2 className='capitalize text-sm lg:text-base font-semibold'>{profile.fullName}</h2> 
                                     <h2 className='capitalize text-xs lg:text-sm text-gray-400 dark:text-white mb-4 md:mb-0'>{profile.friends}</h2>
-                                    <button className='bg-secondary dark:bg-primary py-1 px-3 md:hidden text-sm rounded-full text-white' onClick={()=> setShowFriends(!showFriends)}>View all users</button>
+                                    <button className='bg-secondary dark:bg-primary py-1 px-3 md:hidden text-sm rounded-full text-white' onClick={()=> setShowFriends(!showFriends)}>View all friends</button>
                                 </div>
                                 {user.user._id === id && 
                                     <button className="text-lg flex items-center gap-2" onClick={()=> setShowProfileEdit(!showProfileEdit)}>
@@ -187,7 +187,29 @@ const Profile = () => {
                     </Card>
                 </Card>
                 <div className='lg:w-[35%] md:w-[45%] md:hidden'>
-                    { showFriends && <FriendListWidget onClick={() => setShowFriends(false)}/>}
+                    { showFriends && 
+                        <Card>
+                            { friends.length > 0 && <h2 className='capitalize text-sm lg:text-base font-semibold p-3 lg:p-4'>Friends</h2>}
+                                { friends.length > 0 && friends.map((friend) => (
+                                    <div className='flex gap-2 items-center border-b py-2 px-3 lg:px-4 last:border-b-0' key={friend._id}>
+                                        <Link className="" to={`/profile/${friend._id}`}>
+                                            <SmallAvatar profileImage={friend.profilePicture}/>
+                                        </Link>
+                                        <div className='flex justify-between items-center grow'>
+                                            <div>
+                                                <h2 className='capitalize text-sm font-semibold'>{friend.fullName}</h2>
+                                                <h2 className='capitalize text-xs text-gray-400 dark:text-white'>{friend.userName}</h2>
+                                                <h2 className='capitalize text-xs text-gray-400 dark:text-white'>{friend.occupation}</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                                <div className='p-3 lg:p-4'>
+                                    <button onClick={() => setShowFriends(false)} className='bg-secondary dark:bg-primary py-1 px-3 md:hidden text-sm rounded-full text-white'>Hide friendlist</button>
+                                </div>
+                            
+                        </Card>
+                    }
                 </div>
                 { showProfileEdit && <ProfileForm/>}
                 {user.user._id === profile._id ? <PostForm/> : ''}

@@ -16,7 +16,7 @@ const Feeds = () => {
   useEffect(() => {
     if (user) {
           axios.get('api/posts').then(({data}) => {
-            setPosts(data.sort((p1, p2) => {return new Moment(p2.createdAt).format('YYYYMMDD') - new Moment(p1.createdAt).format('YYYYMMDD')}));
+            setPosts(data);
           })
       }
   }, [user]);

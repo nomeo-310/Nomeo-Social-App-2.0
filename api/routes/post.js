@@ -61,7 +61,7 @@ router.get('/:id', async (req, res) => {
 // get all timeline posts
 router.get('/', async (req, res) => {
     try {
-        const post = await Post.find();
+        const post = await Post.find().sort({_id:-1});
         res.status(200).json(post)
     } catch (error) {
         res.status(408).json({message: error.message});
@@ -72,7 +72,7 @@ router.get('/', async (req, res) => {
 router.get('/timeline/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const post = await Post.find({userId: id});
+        const post = await Post.find({userId: id}).sort({_id:-1});
         res.status(200).json(post)
     } catch (error) {
         res.status(408).json({message: error.message});
@@ -112,23 +112,24 @@ router.put('/:id/comments', async (req, res) => {
 })
 
 
-// //delete a post
-// router.delete('/:id', async (req, res) => {
-//     try {
-//         const post = await Post.findById(req.params.id)
-//         if (post.userId === req.body.userId) {
-//             await Post.deleteOne()
-//             res.status(200).json('post has been deleted')
-//         } else {
-//             res.status(408).json('You can only deleted your own post');
-//         }
-//     } catch (error) {
-//         res.status(505).json(error);
-//     }
-// });
+//delete a post
+router.delete('/:id/:userId', async (req, res) => {
+    try {
+        const { id, userId } = req.params;
+        const post = await Post.findById(id)
+        if (post.userId === userId) {
+            await post.deleteOne()
+            res.status(200).json('post has been deleted')
+        } else {
+            res.status(408).json('You can only deleted your own post');
+        }
+    } catch (error) {
+        res.status(505).json(error);
+    }
+});
 
 //update user's post
-// router.put('/:id/posts', verifyToken, async (req, res) => {
+// router.put('/:id/posts', async (req, res) => {
 //     try {
 //         const { userId } = req.params;
 //         const posts = await Post.find({userId});

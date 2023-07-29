@@ -16,7 +16,7 @@ const Home = () => {
         <Header/>
         <div className="pt-16 lg:pt-24 md:pt-20 flex-col md:flex-row lg:w-[78%] mx-auto flex md:gap-4 w-[92%]">
             <div className='lg:w-[35%] md:w-[45%]'>
-                <div className='mt-3 md:mt-0 hidden md:block'>
+                <div className='mt-3 md:mt-0'>
                     <FriendListWidget/>
                 </div>
             </div>
